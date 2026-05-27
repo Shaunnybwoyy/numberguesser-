@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
 
         // 1. The random number the user needs to guess
         val targetNumber = (1..100).random()
+        var guessCount = 0
 
         // 2. Find the UI elements
         val guessEditText = findViewById<EditText>(R.id.guessEditText)
@@ -35,17 +36,18 @@ class MainActivity : AppCompatActivity() {
             
             if (userGuessString.isNotEmpty()) {
                 val userGuess = userGuessString.toInt()
+                guessCount++
                 
                 // 4. Compare the guess and update the result text
                 when {
                     userGuess < targetNumber -> {
-                        resultTextView.text = "Your number is too low!"
+                        resultTextView.text = "Your number is too low! (Guess #$guessCount)"
                     }
                     userGuess > targetNumber -> {
-                        resultTextView.text = "Your number is too high!"
+                        resultTextView.text = "Your number is too high! (Guess #$guessCount)"
                     }
                     else -> {
-                        resultTextView.text = "Your number is correct! You win!"
+                        resultTextView.text = "Your number is correct! You win in $guessCount guesses!"
                     }
                 }
             } else {
