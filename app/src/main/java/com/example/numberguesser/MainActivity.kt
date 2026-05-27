@@ -1,6 +1,7 @@
 package com.example.numberguesser
 
 import android.os.Bundle
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -17,5 +18,7 @@ class MainActivity : AppCompatActivity() {
             insets
         }
         val randomInt = (1..100).random()
+        val numberTextView = findViewById<TextView>(R.id.numberTextView)
+        numberTextView.text = randomInt.toString()
     }
 }
