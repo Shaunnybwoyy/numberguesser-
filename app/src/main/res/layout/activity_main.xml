@@ -11,12 +11,12 @@
     <TextView
         android:id="@+id/instructionTextView"
         android:layout_width="100dp"
-        android:layout_height="8dp"
+        android:layout_height="50dp"
         android:text="Enter a number"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/guessEditText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.523"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed" />
