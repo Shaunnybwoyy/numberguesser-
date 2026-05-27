@@ -11,7 +11,7 @@
     <TextView
         android:id="@+id/instructionTextView"
         android:layout_width="100dp"
-        android:layout_height="50dp"
+        android:layout_height="45dp"
         android:text="Enter a number"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/guessEditText"
