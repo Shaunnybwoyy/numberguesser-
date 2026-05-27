@@ -1,6 +1,8 @@
 package com.example.numberguesser
 
 import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -12,13 +14,43 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
+        
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val randomInt = (1..100).random()
-        val numberTextView = findViewById<TextView>(R.id.numberTextView)
-        numberTextView.text = randomInt.toString()
+
+        // 1. The random number the user needs to guess
+        val targetNumber = (1..100).random()
+
+        // 2. Find the UI elements
+        val guessEditText = findViewById<EditText>(R.id.guessEditText)
+        val guessButton = findViewById<Button>(R.id.guessButton)
+        val resultTextView = findViewById<TextView>(R.id.resultTextView)
+
+        // 3. Set up the button click listener
+        guessButton.setOnClickListener {
+            val userGuessString = guessEditText.text.toString()
+            
+            if (userGuessString.isNotEmpty()) {
+                val userGuess = userGuessString.toInt()
+                
+                // 4. Compare the guess and update the result text
+                when {
+                    userGuess < targetNumber -> {
+                        resultTextView.text = "Your number is too low!"
+                    }
+                    userGuess > targetNumber -> {
+                        resultTextView.text = "Your number is too high!"
+                    }
+                    else -> {
+                        resultTextView.text = "Your number is correct! You win!"
+                    }
+                }
+            } else {
+                resultTextView.text = "Please enter a number first."
+            }
+        }
     }
 }
